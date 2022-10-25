@@ -38,4 +38,5 @@ const Body = styled.div`
   width: 70%;
   border: 1px solid #ffffff;
   margin: 0 auto;
+  position: relative;
 `;

@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import cookies from "react-cookie";
 import { BiLogIn } from "react-icons/bi";
 import { AiOutlineUserAdd } from "react-icons/ai";
+import { FiLogOut } from "react-icons/fi";
+import { TfiWrite } from "react-icons/tfi";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -33,22 +35,29 @@ const Header = () => {
             </H1Size>
           </Link>
         </div>
-        <div>
-          {!loginId ? (
-            <InputFlex>
-              <Link to="/login">
-                <BtnStyle style={{ marginRight: "10px" }}>
-                  <BiLogIn
-                    style={{
-                      fontSize: "18px",
-                      position: "relative",
-                      top: "-1px",
-                      marginRight: "5px",
-                    }}
-                  />
-                  로그인
-                </BtnStyle>
-              </Link>
+
+        {!loginId ? (
+          <InputFlex>
+            <div>
+              <BtnStyle
+                style={{ marginRight: "10px" }}
+                onClick={() => {
+                  navigate("/login");
+                }}
+              >
+                <BiLogIn
+                  style={{
+                    fontSize: "15px",
+                    position: "relative",
+                    top: "-1px",
+                    marginRight: "5px",
+                  }}
+                />
+                로그인
+              </BtnStyle>
+            </div>
+
+            <div>
               <BtnStyle
                 onClick={() => {
                   navigate("/signin");
@@ -56,7 +65,7 @@ const Header = () => {
               >
                 <AiOutlineUserAdd
                   style={{
-                    fontSize: "18px",
+                    fontSize: "15px",
                     position: "relative",
                     top: "-1px",
                     marginRight: "5px",
@@ -64,16 +73,43 @@ const Header = () => {
                 />
                 회원가입
               </BtnStyle>
-            </InputFlex>
-          ) : null}
-          {loginId ? (
-            <InputFlex>
-              <p style={{ margin: 0 }}>{loginId}님</p>
-              <button onClick={writeMove}>글쓰기</button>
-              <button onClick={logOut}>로그아웃</button>
-            </InputFlex>
-          ) : null}
-        </div>
+            </div>
+          </InputFlex>
+        ) : null}
+        {loginId ? (
+          <InputFlex>
+            <p style={{ marginRight: "20px", fontSize: "15px" }}>
+              {loginId}님 환영합니다!
+            </p>
+            <div style={{ marginRight: "10px" }}>
+              <BtnStyle onClick={writeMove}>
+                {" "}
+                <TfiWrite
+                  style={{
+                    fontSize: "15px",
+                    position: "relative",
+                    top: "-1px",
+                    marginRight: "5px",
+                  }}
+                />
+                글쓰기
+              </BtnStyle>
+            </div>
+            <div>
+              <BtnStyle onClick={logOut}>
+                <FiLogOut
+                  style={{
+                    fontSize: "15px",
+                    position: "relative",
+                    top: "-1px",
+                    marginRight: "5px",
+                  }}
+                />
+                로그아웃
+              </BtnStyle>
+            </div>
+          </InputFlex>
+        ) : null}
       </FlexDiv>
     </Head>
   );
@@ -87,7 +123,6 @@ const Head = styled.div`
   background: transparent;
   border-bottom: 1px solid #000;
   display: flex;
-  margin-bottom: 30px;
 `;
 
 const H1Size = styled.h1`
@@ -120,7 +155,8 @@ const BtnStyle = styled.button`
   align-items: center;
   border: none;
   background: transparent;
-  font-size: 16px;
+  font-size: 15px;
+  cursor: pointer;
 `;
 
 const SvgSize = styled.svg`

@@ -16,8 +16,6 @@ const Login = () => {
   const pws = useRef();
 
   const logInForm = () => {
-    console.log(users.current.value);
-    console.log(pws.current.value);
     axios({
       method: "POST",
       url: "http://54.82.19.91/login",
@@ -113,7 +111,7 @@ export default Login;
 
 const H1Ani = styled.h1`
   text-align: center;
-  padding: 40px 0;
+  padding: 20px 0;
 `;
 
 const ImgCenter = styled.img`
