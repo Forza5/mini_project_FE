@@ -1,0 +1,90 @@
+.animates {
+  animation: ani1 !important;
+  animation-delay: 1s !important;
+  animation-duration: 0.5s !important;
+  animation-fill-mode: both !important;
+}
+
+@keyframes ani1 {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.ani1 {
+  animation-delay: 1.5s !important;
+}
+
+.ani2 {
+  animation-delay: 1.6s !important;
+}
+
+.ani3 {
+  animation-delay: 1.7s !important;
+}
+
+.ani4 {
+  animation-delay: 1.8s !important;
+}
+
+.ani5 {
+  animation-delay: 1.9s !important;
+}
+
+.ani6 {
+  animation-delay: 2s !important;
+}
+
+.ani7 {
+  animation-delay: 2.1s !important;
+}
+
+.moveArr {
+  position: relative;
+  transition: all 0.4s;
+}
+
+.moveArr:hover {
+  color: gray;
+}
+
+.moveArr::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #000;
+  transition: all 0.4s;
+}
+
+.moveArr:hover::after {
+  width: 100%;
+}
+
+.moves {
+  animation: moveRight 0.6s ease-in-out infinite;
+  position: relative;
+  top: 3px;
+}
+
+@keyframes moveRight {
+  0% {
+    margin-left: 5px;
+  }
+  50% {
+    margin-left: 9px;
+  }
+  100% {
+    margin-left: 5px;
+  }
+}
