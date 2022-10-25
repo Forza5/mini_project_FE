@@ -1,21 +1,23 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Home from '../../pages/Home';
-import { __getPosts } from '../../redux/modules/postsSlice';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux"
+import PostCard from "../../components/PostCard";
+import { __getPosts } from "../../redux/modules/postsSlice";
 
-const getList = () => {
-   const dispatch = useDispatch();
-   const { posts } = useSelector((state) => state.posts);
+const GetList = () => {
+    const dispatch = useDispatch();
+    const { posts } = useSelector((state) => state.posts);
 
-   useEffect(() => {
-      dispatch(__getPosts());
-   }, [dispatch]);
-
-   return (
-      <div>
-         {posts.map((post) => (
-            <Home key={post.postId} data={post} />
+    useEffect(()=>{
+        dispatch(__getPosts());
+     }, [dispatch]);
+ 
+    return (
+        <>
+         {posts?.data?.map(post => (
+            <PostCard key={post.postId} post={post} />
          ))}
-      </div>
-   );
+        </>
+    );
 };
+
+export default GetList;

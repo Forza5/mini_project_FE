@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/Layout";
-import AddList from "../features/list/addList";
+import AddList from "../features/list/AddList";
 
 const Write = () => {
   return (

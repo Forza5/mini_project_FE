@@ -27,6 +27,8 @@ const Login = () => {
       .then((response) => {
         if (response.status === 200) {
           localStorage.setItem("loginId", users.current.value);
+          localStorage.setItem("token", response.data.token);
+          console.log(response)
           // localStorage.setItem("password", pws.current.value);
           alert(`${users.current.value}님 반갑습니다!!`);
           navigate("/");

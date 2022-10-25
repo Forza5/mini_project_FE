@@ -14,26 +14,26 @@ const AddList = () => {
    const [typeofpet, setTypeofpet] = useState();
    const [category, setCategory] = useState();
    const [subcategory, setSubcategory] = useState();
+   const [url, setUrl] = useState('');
 
    const [post, setPost] = useState({
-      // postId: 0,
-      // loginId: 0,
       maker: '',
       product: '',
       title: '',
       content: '',
    });
 
-   const onSubmitHandler = (post, typeofpet, category, subcategory) => {
+   const onSubmitHandler = (post, typeofpet, category, subcategory, url) => {
       dispatch(
          __addPost({
-            maker: post.maker,
-            product: post.product,
-            title: post.title,
-            content: post.content,
             typeofpet: typeofpet,
             category: category,
             subcategory: subcategory,
+            title: post.title,
+            maker: post.maker,
+            product: post.product,
+            content: post.content,
+            photo: "https://team1-catdog-bucket.s3.amazonaws.com"+url
          })
       );
       navigate('/');
@@ -83,7 +83,7 @@ const AddList = () => {
          <form
             onSubmit={(e) => {
                e.preventDefault();
-               onSubmitHandler(post, typeofpet, category, subcategory);
+               onSubmitHandler(post, typeofpet, category, subcategory, url);
             }}>
             <h2> 마음으로 낳고 지갑으로 기른 후기를 들려주세요!</h2>
             <SelectBoxes>
@@ -147,8 +147,7 @@ const AddList = () => {
                   }}
                />
             </ProductInfo>
-            <AddPhoto />
-            {/* <Photo type='file' accept='image/*' /> */}
+            <AddPhoto setUrl={setUrl}/>
             <PostBody>
                <input
                   type='text'
@@ -173,9 +172,6 @@ const AddList = () => {
             </PostBody>
             <SubmitBtn>추가하기</SubmitBtn>
          </form>
-         <span> {typeofpet} </span>
-         <span> {category} </span>
-         <span> {subcategory} </span>
       </>
    );
 };
