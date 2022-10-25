@@ -46,6 +46,10 @@
   animation-delay: 2.1s !important;
 }
 
+.ani8 {
+  animation-delay: 2.2s !important;
+}
+
 .moveArr {
   position: relative;
   transition: all 0.4s;
