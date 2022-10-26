@@ -4,7 +4,10 @@ import styled from 'styled-components';
 
 const PostCard = ({ post }) => {
    const navigate = useNavigate();
-
+   const onViewHandler = () => {
+    navigate(`posts/${post.postId}`);
+   };
+   
    return (
       <Card>
          <FirstLine>
@@ -14,7 +17,7 @@ const PostCard = ({ post }) => {
                   <ProductInfo>{post.maker} / {post.product}</ProductInfo>
                </div>
             </MainInfo>
-            <ReviewBtn>상세보기</ReviewBtn>
+            <ReviewBtn onClick={onViewHandler}>상세보기</ReviewBtn>
          </FirstLine>
          <div> 작성자: {post.loginId}</div>
          <div> {post.title} </div>
