@@ -56,7 +56,7 @@ const AddPhoto = (props) => {
   };
 
   return (
-    <div>
+    <PhotoBox>
       <PhotoInput>
         <Input type="file" onChange={handleFileInput} />
         {selectedFile ? (
@@ -75,20 +75,22 @@ const AddPhoto = (props) => {
         {showAlert ? (
           <Alert color="primary">업로드 완료</Alert>
         ) : (
-          <Alert color="primary">파일을 선택해주세요</Alert>
+          <Alert style={{ fontSize: "15px" }}>파일을 선택해주세요</Alert>
         )}
       </div>
-    </div>
+    </PhotoBox>
   );
 };
 
 export default AddPhoto;
 
+const PhotoBox = styled.div`
+  margin-bottom: 40px;
+`;
+
 const PhotoInput = styled.div`
-  margin-top: 20px;
   width: 370px;
   /* height: 40px; */
-  background-color: #e3e0e1;
   border-radius: 10px;
   justify-content: center;
   padding: 5px;

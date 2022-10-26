@@ -165,7 +165,6 @@ const AddList = () => {
             />
           </div>
         </ProductInfo>
-        <AddPhoto setUrl={setUrl} />
         <PostBody>
           <WriteBox>
             <LabelBox>제목</LabelBox>
@@ -183,8 +182,10 @@ const AddList = () => {
             />
           </WriteBox>
           <WriteBox>
+            <LabelBox>내용</LabelBox>
             <textarea
               maxLength={150}
+              placeholder="150자 이내로 글을 작성해주세요"
               onChange={(e) => {
                 const { value } = e.target;
                 setPost({
@@ -195,6 +196,7 @@ const AddList = () => {
             />
           </WriteBox>
         </PostBody>
+        <AddPhoto setUrl={setUrl} />
         <SubmitBtn>추가하기</SubmitBtn>
       </FormBox>
     </>
@@ -253,7 +255,7 @@ const ProductInfo = styled.div`
 const PostBody = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 30px 0px 20px 0px;
+  margin: 30px 0px 10px 0px;
   max-width: 100%;
   gap: 20px;
 
@@ -270,10 +272,14 @@ const PostBody = styled.div`
 
   textarea {
     border-radius: 10px;
-    border: none;
-    background-color: #e3e0e1;
+    border: 2px solid #ddd;
     height: 200px;
     resize: none;
+    padding: 10px;
+    font-size: 14px;
+    :focus {
+      outline: 2px solid #000;
+    }
   }
 `;
 
