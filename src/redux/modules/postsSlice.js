@@ -7,7 +7,8 @@ const initialState = {
    error: null,
 };
 
-export const __getPosts = createAsyncThunk('GET_POSTS', async (_, thunkAPI) => {
+export const __getPosts = createAsyncThunk(
+    'GET_POSTS', async (_, thunkAPI) => {
    try {
       const data = await axios.get('http://54.82.19.91/posts');
       return thunkAPI.fulfillWithValue(data.data);
@@ -39,7 +40,7 @@ export const __addPost = createAsyncThunk(
 );
 
 export const postsSlice = createSlice({
-   name: 'reviews',
+   name: 'posts',
    initialState,
    reducers: [],
    extraReducers: {
