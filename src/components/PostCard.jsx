@@ -7,7 +7,7 @@ const PostCard = ({ post }) => {
    const onViewHandler = () => {
     navigate(`posts/${post.postId}`);
    };
-   
+
    return (
       <Card>
          <FirstLine>
@@ -21,7 +21,7 @@ const PostCard = ({ post }) => {
          </FirstLine>
          <div> 작성자: {post.loginId}</div>
          <div> {post.title} </div>
-         <PhotoArea> photo </PhotoArea>
+         <PhotoArea> <ImgView src={post.photo} /> </PhotoArea>
          <div> 댓글(n) 좋아요 {post.likes} </div>
       </Card>
    );
@@ -30,11 +30,10 @@ const PostCard = ({ post }) => {
 export default PostCard;
 
 const Card = styled.div`
-   width: 500px;
-   height: 500px;
+   width: 530px;
    background-color: #e3e0e1;
    margin-bottom: 10px;
-   padding: 15px;
+   padding: 30px;
    border-radius: 10px;
 `;
 
@@ -53,7 +52,7 @@ const PhotoArea = styled.div`
    width: 400px;
    margin: auto;
    margin-top: 10px;
-   margin-bottom: 10px;
+   margin-bottom: 20px;
 `;
 
 const ReviewBtn = styled.button`
@@ -69,4 +68,9 @@ const ProductInfo = styled.span`
     color: grey;
     margin-left: 5px;
     display: flex;
+`
+
+const ImgView = styled.img`
+    height: 400px;
+    width: 400px;
 `
