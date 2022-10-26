@@ -12,10 +12,10 @@ const PostCard = ({ post }) => {
     <Card>
       <FirstLine>
         <MainInfo>
-          <TypeOfPet> {post.typeofpet} </TypeOfPet>
+          <TypeOfPet> {post.typeofpet} &gt; </TypeOfPet>
           <div>
             <ProductInfo>
-              {post.maker} / {post.product}
+              {post.maker} &gt; {post.product}
             </ProductInfo>
           </div>
         </MainInfo>
@@ -65,6 +65,7 @@ const Card = styled.div`
 const FirstLine = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const MainInfo = styled.div`
@@ -80,11 +81,13 @@ const PhotoArea = styled.div`
   margin-bottom: 20px;
 `;
 
-const ReviewBtn = styled.button``;
+const ReviewBtn = styled.button`
+  width: 120px;
+  height: 35px;
+`;
 
 const TypeOfPet = styled.p`
-  color: #16531c;
-  font-size: 20px;
+  color: grey;
 `;
 
 const ProductInfo = styled.p`
