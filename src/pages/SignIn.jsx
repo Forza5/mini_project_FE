@@ -98,7 +98,7 @@ const SignUp = () => {
 
   const idCheck = () => {
     axios
-      .get("http://54.82.19.91/signup", {
+      .get("https://tastekim.shop/signup", {
         id: { loginId: loginId },
       })
       .then((response) => {

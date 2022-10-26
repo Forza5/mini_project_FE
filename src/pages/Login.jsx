@@ -18,7 +18,7 @@ const Login = () => {
   const logInForm = () => {
     axios({
       method: "POST",
-      url: "http://54.82.19.91/login",
+      url: "https://tastekim.shop/login",
       data: {
         loginId: users.current.value,
         password: pws.current.value,
