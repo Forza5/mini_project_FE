@@ -302,12 +302,18 @@ const WriteBox = styled.div`
 const SubmitBtn = styled.button`
   border: none;
   height: 40px;
-  line-height: 40px;
-  width: 300px;
+  line-height: 38px;
+  width: 180px;
   border-radius: 10px;
   border: 2px solid #ddd;
   cursor: pointer;
   background: transparent;
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s;
+  &:hover {
+    border: 2px solid #000;
+    background: #000;
+    color: #fff;
+  }
 `;
