@@ -23,7 +23,7 @@ const PostCard = ({ post }) => {
       </FirstLine>
       <PhotoArea>
         {" "}
-        <ImgView src={post.photo} />{" "}
+        <ImgView src={post.photo} alt="이미지" />{" "}
       </PhotoArea>
       <LikeBox>
         <p>좋아요 {post.likes}</p>

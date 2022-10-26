@@ -10,7 +10,7 @@ const BodyWrap = ({ children }) => {
       <GlobalStyle />
       <Header />
       <UnderHeader>
-        <Navbar />
+        {/* <Navbar /> */}
         <Body>{children}</Body>
       </UnderHeader>
     </PageLayout>
