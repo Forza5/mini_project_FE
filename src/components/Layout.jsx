@@ -35,8 +35,7 @@ const UnderHeader = styled.div`
 
 const Body = styled.div`
   padding: 40px;
-  width: 70%;
-  border: 1px solid #ffffff;
+  width: 100%;
   margin: 0 auto;
   position: relative;
 `;

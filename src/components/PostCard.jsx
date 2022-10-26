@@ -19,11 +19,10 @@ const PostCard = ({ post }) => {
             </ProductInfo>
           </div>
         </MainInfo>
-        <ReviewBtn onClick={onViewHandler}>상세보기</ReviewBtn>
       </FirstLine>
       <PhotoArea>
         {" "}
-        <ImgView src={post.photo} alt="이미지" />{" "}
+        <ImgView src={post.photo} onClick={onViewHandler} alt="이미지" />{" "}
       </PhotoArea>
       <LikeBox>
         <p>좋아요 {post.likes}</p>
@@ -56,8 +55,8 @@ const IDs = styled.div`
 `;
 
 const Card = styled.div`
-  width: 100%;
-  margin-bottom: 10px;
+  width: 70%;
+  margin: 0 auto;
   padding: 30px;
   border-radius: 10px;
 `;
@@ -78,12 +77,27 @@ const PhotoArea = styled.div`
   width: 400px;
   margin: auto;
   margin-top: 10px;
+  font-size: 20px;
   margin-bottom: 20px;
-`;
-
-const ReviewBtn = styled.button`
-  width: 120px;
-  height: 35px;
+  position: relative;
+  transition: all 0.3s;
+  ::after {
+    content: "댓글 남기러 가기!!";
+    display: inline-block;
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: ease-in-out 0.4s;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 10px;
+  }
+  &:hover {
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.2);
+  }
 `;
 
 const TypeOfPet = styled.p`
@@ -96,6 +110,7 @@ const ProductInfo = styled.p`
 `;
 
 const ImgView = styled.img`
-  height: 400px;
-  width: 400px;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
 `;
