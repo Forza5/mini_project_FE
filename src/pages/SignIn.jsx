@@ -77,7 +77,7 @@ const SignUp = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://54.82.19.91/signup", {
+      .post("https://tastekim.shop/signup", {
         loginId: loginId,
         password: password,
         confirmPassword: confirmPassword,
