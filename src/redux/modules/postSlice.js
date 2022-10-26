@@ -26,6 +26,25 @@ export const __getPost = createAsyncThunk(
     }
 );
 
+export const __modifyPost = createAsyncThunk(
+    "MODIFY_POST",
+    async (payload, thunkAPI) => {
+        try {
+            axios.put(`http://54.82.19.91/posts/${payload.postId}`, {
+                content: payload.content,
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                 },
+            });
+            return thunkAPI.fulfillWithValue(payload);
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error);
+        }
+    }
+)
+
 const postSlice = createSlice({
     name: "post",
     initialState,
@@ -42,6 +61,18 @@ const postSlice = createSlice({
             state.isLoading = false;
             state.error = action.payload;
         },
+        [__modifyPost.pending]: (state) => {
+            state.isLoading = true;
+        },
+        [__modifyPost.fulfilled]: (state, action) => {
+            state.isLoading = false;
+            state.post = action.payload;
+        },
+        [__modifyPost.rejected]: (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload;
+        },
+
     }
 })
 
