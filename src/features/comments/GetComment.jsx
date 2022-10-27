@@ -1,14 +1,19 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { __deleteComment, __modifyComment } from '../../redux/modules/commentSlice';
+import {
+   __deleteComment,
+   __modifyComment,
+} from '../../redux/modules/commentSlice';
 
 const GetCommnet = ({ comment }) => {
    const [isEdit, setEdit] = useState(false);
    const [input, setInput] = useState();
    const dispatch = useDispatch();
-   
+   const ids = localStorage.getItem('loginId');
+   console.log(comment);
+   console.log(ids);
+
    const onModifyCommentHandler = () => {
       setEdit(!isEdit);
       if (input.trim() === '') {
@@ -39,12 +44,18 @@ const GetCommnet = ({ comment }) => {
                   )}
                </Comment>
                <Btns>
-                  {!isEdit ? (
-                     <button onClick={() => setEdit(true)}>수정</button>
-                  ) : (
-                     <button onClick={onModifyCommentHandler}>완료</button>
-                  )}
-                  <button onClick={onDeleteCommentHandler}>삭제</button>
+                  {ids === comment?.loginId ? (
+                     <div>
+                        {isEdit ? (
+                           <button onClick={() => setEdit(true)}>수정</button>
+                        ) : (
+                           <button onClick={onModifyCommentHandler}>
+                              완료
+                           </button>
+                        )}
+                        <button onClick={onDeleteCommentHandler}>삭제</button>
+                     </div>
+                  ) : null}
                </Btns>
             </Comments>
          </CommentBlock>
