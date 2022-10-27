@@ -9,8 +9,8 @@ import {
 import Layout from "../components/Layout";
 import styled from "styled-components";
 import { __getPosts } from "../redux/modules/postsSlice";
-import AddComment from "../features/comments/addComment";
-import GetComments from "../features/comments/getComments";
+import AddComment from "../features/comments/AddComment";
+import GetComments from "../features/comments/GetComments";
 
 const Detail = () => {
   const dispatch = useDispatch();

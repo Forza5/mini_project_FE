@@ -50,6 +50,23 @@ export const __modifyComment = createAsyncThunk(
    }
 );
 
+export const __deleteComment = createAsyncThunk(
+  'DELETE_POST',
+  async (payload, thunkAPI) => {
+    console.log(payload);
+     try {
+        await axios.delete(`https://tastekim.shop/comments/${payload}`, {
+           headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+           },
+        });
+         thunkAPI.dispatch(__getComments())
+        return thunkAPI.fulfillWithValue(payload);
+     } catch (error) {
+        return thunkAPI.rejectWithValue(error);
+     }});
+
 
 // export const __getCommentsNum = createAsyncThunk(
 //    'GET_COMMENT_NUM',
@@ -132,7 +149,18 @@ const commentSlice = createSlice({
       [__modifyComment.rejected]: (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-      }
+      },
+      [__deleteComment.pending]: (state) => {
+        state.isLoading = true;
+     },
+     [__deleteComment.fulfilled]: (state, action) => {
+        state.isLoading = false;
+        state.post = action.payload;
+     },
+     [__deleteComment.pending]: (state, action) => {
+        state.isLoading = true;
+        state.error = action.payload;
+     },
       // [__getCommentsNum.pending]: (state) => {
       //   state.isLoading = false;
       // },
