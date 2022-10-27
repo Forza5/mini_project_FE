@@ -10,7 +10,9 @@ const GetList = () => {
     useEffect(()=>{
         dispatch(__getPosts());
      }, [dispatch]);
- 
+
+     console.log(posts);
+     
     return (
         <>
          {posts?.data?.map(post => (
