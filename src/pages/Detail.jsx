@@ -41,7 +41,8 @@ const Detail = () => {
    };
 
    const onDeleteHandler = () => {
-      dispatch(__deletePost(id?.postId));
+      dispatch
+      (__deletePost(id?.postId));
       navigate("/")
    };
 

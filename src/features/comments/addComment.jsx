@@ -1,12 +1,13 @@
 const AddComment = () => {
     return (
         <>
-        <form onSubmit={(e) => {
-            e.preventDefault();
-            onSubmitComment(comment);
-        }}
+        <form 
+        // onSubmit={(e) => {
+        //     e.preventDefault();
+        //     onSubmitComment(comment);
+        // }}
         >
-            
+            hi
         </form>
         </>
     )
