@@ -1,5 +1,7 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { __getPosts } from './postsSlice';
 
 const initialState = {
   movie: [],

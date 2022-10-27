@@ -1,9 +1,11 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { __getPost, __modifyPost } from '../redux/modules/postSlice';
+import { useNavigate, useParams } from 'react-router-dom';
+import { __deletePost, __getPost, __modifyPost } from '../redux/modules/postSlice';
 import Layout from '../components/Layout';
 import styled from 'styled-components';
+import { __getPosts } from '../redux/modules/postsSlice';
+import AddComment from '../features/comments/AddComment';
 
 const Detail = () => {
    const dispatch = useDispatch();
@@ -16,15 +18,15 @@ const Detail = () => {
    const [input, setInput] = useState();
    const { isLoading, error, post } = useSelector((state) => state.post);
    const LikeNum = post?.likes;
-   const inputRef = useRef<HTMLInputElement>(null);
+   const navigate = useNavigate();
+   // const inputRef = useRef<HTMLInputElement>(null);
   //  useLayoutEffect(()=>{
   //   if (inputRef.current !== null) inputRef.current.focus();
   //  });
 
-
-   // if (isLoading) {
-   //    return <div>로딩 중....</div>;
-   // }
+   if (isLoading) {
+      return <div>로딩 중....</div>;
+   }
 
    if (error) {
       return <div>{error?.message}</div>;
@@ -38,6 +40,11 @@ const Detail = () => {
       dispatch(__modifyPost({ ...post, content: input }));
    };
 
+   const onDeleteHandler = () => {
+      dispatch(__deletePost(id?.postId));
+      navigate("/")
+   };
+
    return (
       <Layout>
          <PostView>
@@ -47,13 +54,12 @@ const Detail = () => {
                ) : (
                   <button onClick={onModifyHandler}>저장</button>
                )}
-
-               {/* <button onClick={onModifyHandler}>수정</button> */}
-
-               <button>삭제</button>
+               <button 
+               onClick={onDeleteHandler}
+               >삭제</button>
             </Btns>
             <div>
-               {post?.typeofpet} > {post?.category} > {post?.subcategory}{' '}
+               {post?.typeofpet} / {post?.category} / {post?.subcategory}{' '}
             </div>
             <div>
                제조사: {post?.maker} 제품명: {post?.product}
@@ -82,7 +88,9 @@ const Detail = () => {
                {LikeNum > 0 ? LikeNum : null}
             </div>
          </PostView>
-         <ReplyView>댓글 부분</ReplyView>
+         <ReplyView>
+            <AddComment />
+         </ReplyView>
       </Layout>
    );
 };
