@@ -5,6 +5,7 @@ import { __deletePost, __getPost, __modifyPost } from '../redux/modules/postSlic
 import Layout from '../components/Layout';
 import styled from 'styled-components';
 import { __getPosts } from '../redux/modules/postsSlice';
+import AddComment from '../features/comments/AddComment';
 
 const Detail = () => {
    const dispatch = useDispatch();
@@ -87,7 +88,9 @@ const Detail = () => {
                {LikeNum > 0 ? LikeNum : null}
             </div>
          </PostView>
-         <ReplyView>댓글 부분</ReplyView>
+         <ReplyView>
+            <AddComment />
+         </ReplyView>
       </Layout>
    );
 };
