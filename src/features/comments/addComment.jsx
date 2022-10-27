@@ -7,6 +7,7 @@ const AddComment = () => {
       //     onSubmitComment(comment);
       // }}
       >
+        입력 폼
         hi
       </form>
     </>

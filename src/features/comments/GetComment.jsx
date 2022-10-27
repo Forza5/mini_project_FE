@@ -1,51 +1,52 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import styled from "styled-components";
-import { __modifyComment } from "../../redux/modules/commentSlice";
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import { __deleteComment, __modifyComment } from '../../redux/modules/commentSlice';
 
 const GetCommnet = ({ comment }) => {
    const [isEdit, setEdit] = useState(false);
    const [input, setInput] = useState();
    const dispatch = useDispatch();
-
+   
+   console.log(comment);
    const onModifyCommentHandler = () => {
-    setEdit(!isEdit);
-    // if (input.trim() === '') {
-    //    return alert('내용을 입력해주세요');
-    // }
-    dispatch(__modifyComment({ ...comment, comment: input }));
- };
+      setEdit(!isEdit);
+      if (input.trim() === '') {
+         return alert('내용을 입력해주세요');
+      }
+      dispatch(__modifyComment({ ...comment, comment: input }));
+   };
 
+   const onDeleteCommentHandler = () => {
+      dispatch(__deleteComment(comment.commentId));
+   };
 
    return (
       <>
          <CommentBlock>
             <Comments>
-            <LoginId>{comment?.loginId}</LoginId>
-            <Comment>
-               {!isEdit ? (
-                  <>{comment?.comment}</>
-               ) : (
-                  <input
-                     value={input}
-                     placeholder={`${comment?.comment}`}
-                     onChange={(e) => {
-                        setInput(e.target.value);
-                     }}></input>
-               )}
-            </Comment>
-            <Btns>
-               {!isEdit ? (
-                  <button onClick={() => setEdit(true)}>수정</button>
-               ) : (
-                  <button onClick={onModifyCommentHandler}>완료</button>
-               )}
-               <button
-               //   onClick={onDeleteCommentHandler}
-               >
-                  삭제
-               </button>
-            </Btns>
+               <LoginId>{comment?.loginId}</LoginId>
+               <Comment>
+                  {!isEdit ? (
+                     <>{comment?.comment}</>
+                  ) : (
+                     <input
+                        value={input}
+                        placeholder={`${comment?.comment}`}
+                        onChange={(e) => {
+                           setInput(e.target.value);
+                        }}></input>
+                  )}
+               </Comment>
+               <Btns>
+                  {!isEdit ? (
+                     <button onClick={() => setEdit(true)}>수정</button>
+                  ) : (
+                     <button onClick={onModifyCommentHandler}>완료</button>
+                  )}
+                  <button onClick={onDeleteCommentHandler}>삭제</button>
+               </Btns>
             </Comments>
          </CommentBlock>
       </>
