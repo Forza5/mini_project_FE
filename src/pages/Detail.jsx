@@ -20,6 +20,7 @@ const Detail = () => {
 
   const id = useParams();
   const [isEdit, setEdit] = useState(false);
+  const ids = localStorage.getItem("loginId");
   const [input, setInput] = useState();
   const { isLoading, error, post } = useSelector((state) => state.post);
   const LikeNum = post?.likes;
@@ -50,12 +51,13 @@ const Detail = () => {
     <Layout>
       <PostView>
         <Btns>
-          {!isEdit ? (
-            <button onClick={() => setEdit(true)}>수정</button>
-          ) : (
-            <button onClick={onModifyHandler}>저장</button>
-          )}
-          <button onClick={onDeleteHandler}>삭제</button>
+          {ids === post?.loginId ? (
+            <div>
+              <button onClick={() => setEdit(true)}>수정</button>
+              <button onClick={onDeleteHandler}>삭제</button>
+              <button onClick={onModifyHandler}>저장</button>
+            </div>
+          ) : null}
         </Btns>
         <div>
           {post?.typeofpet} / {post?.category} / {post?.subcategory}{" "}
