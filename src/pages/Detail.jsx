@@ -101,11 +101,11 @@ const Detail = () => {
 export default Detail;
 
 const PostView = styled.div`
-  background-color: #e3e0e1;
-  width: 600px;
+  width: 70%;
   margin-bottom: 5px;
   border-radius: 10px;
   padding: 20px;
+  margin: 0 auto;
 `;
 
 const ReplyView = styled.div`
