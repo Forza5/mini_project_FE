@@ -10,8 +10,6 @@ const PostCard = ({ post }) => {
   const onViewHandler = () => {
     navigate(`posts/${post.postId}`);
   };
-  
-
   return (
     <Card>
       <FirstLine>

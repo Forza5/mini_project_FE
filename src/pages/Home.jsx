@@ -1,5 +1,5 @@
 import React from "react";
-import GetList from "../features/list/GetList";
+import GetList from "../features/list/getList";
 import Layout from "../components/Layout";
 
 const Home = () => {

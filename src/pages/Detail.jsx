@@ -1,7 +1,8 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import {
+
    __deletePost,
    __getPost,
    __modifyPost,
@@ -26,14 +27,14 @@ const Detail = () => {
    const { isLoading, error, post } = useSelector((state) => state.post);
    const navigate = useNavigate();
 
-   if (isLoading) {
-      return <div>로딩 중....</div>;
-   }
 
-   if (error) {
-      return <div>{error?.message}</div>;
-   }
+  if (isLoading) {
+    return <div>로딩 중....</div>;
+  }
 
+  if (error) {
+    return <div>{error?.message}</div>;
+  }
 
    const onModifyHandler = () => {
       setEdit(!isEdit);
@@ -96,47 +97,48 @@ const Detail = () => {
          </CommentView>
       </Layout>
    );
+
 };
 
 export default Detail;
 
 const PostView = styled.div`
-   width: 70%;
-   margin-bottom: 5px;
-   border-radius: 10px;
-   padding: 20px;
-   margin: 0 auto;
+  width: 70%;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 auto;
 `;
 
 const CommentView = styled.div`
-   background-color: #e3e0e1;
-   width: 600px;
-   border-radius: 10px;
-   padding: 20px;
+  background-color: #e3e0e1;
+  width: 600px;
+  border-radius: 10px;
+  padding: 20px;
 `;
 
 const ImgView = styled.div`
-   width: 550px;
-   height: 550px;
-   background-color: antiquewhite;
-   margin: auto;
-   margin-top: 20px;
-   margin-bottom: 20px;
+  width: 550px;
+  height: 550px;
+  background-color: antiquewhite;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `;
 
 const Btns = styled.div`
-   margin-top: 10px;
-   float: right;
+  margin-top: 10px;
+  float: right;
 `;
 
 const ImgBlock = styled.img`
-   width: 550px;
-   height: 550px;
+  width: 550px;
+  height: 550px;
 `;
 
 const ModifyInput = styled.input`
-   background-color: transparent;
-   border: none;
-   border-bottom: 1px solid black;
-   font-size: 16px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 16px;
 `;
