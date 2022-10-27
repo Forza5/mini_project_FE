@@ -20,6 +20,7 @@ const Detail = () => {
 
   const id = useParams();
   const [isEdit, setEdit] = useState(false);
+  const ids = localStorage.getItem("loginId");
   const [input, setInput] = useState();
   const { isLoading, error, post } = useSelector((state) => state.post);
   const LikeNum = post?.likes;
@@ -55,12 +56,13 @@ const Detail = () => {
 
 
         <Btns>
-          {!isEdit ? (
-            <button onClick={() => setEdit(true)}>수정</button>
-          ) : (
-            <button onClick={onModifyHandler}>저장</button>
-          )}
-          <button onClick={onDeleteHandler}>삭제</button>
+          {ids === post?.loginId ? (
+            <div>
+              <button onClick={() => setEdit(true)}>수정</button>
+              <button onClick={onDeleteHandler}>삭제</button>
+              <button onClick={onModifyHandler}>저장</button>
+            </div>
+          ) : null}
         </Btns>
 
         <div>
@@ -105,11 +107,11 @@ const Detail = () => {
 export default Detail;
 
 const PostView = styled.div`
-  background-color: #e3e0e1;
-  width: 600px;
+  width: 70%;
   margin-bottom: 5px;
   border-radius: 10px;
   padding: 20px;
+  margin: 0 auto;
 `;
 
 const CommentView = styled.div`
