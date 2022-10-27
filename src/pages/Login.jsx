@@ -94,7 +94,7 @@ const Login = () => {
             <MoveSign className="animates ani7">
               <Pstyle>아직 회원이 아니신가요?</Pstyle>
               <Link to="/signin" className="moveArr">
-                회원가입 하러가기
+                회원가입하러 가기
                 <span>
                   <HiArrowRight className="moves" />
                 </span>

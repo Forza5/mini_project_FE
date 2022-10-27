@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { __getCommentsNum } from "../redux/modules/commentSlice";
 
 const PostCard = ({ post }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const onViewHandler = () => {
     navigate(`posts/${post.postId}`);
   };
+//   const commentnum = useSelector((state) => state.comment.commentnum);
+
+//   console.log(commentnum);
+
+//   useEffect(() => {
+//     dispatch(__getCommentsNum(post.postId));
+//  }, [dispatch]);
 
   return (
     <Card>
@@ -32,7 +42,7 @@ const PostCard = ({ post }) => {
         <div> {post.title} </div>
         {/* title이 아닌 content가 들어왔으면 좋겠습니다!! */}
       </TitleBox>
-      <div> 댓글(n) </div>
+      <div> 댓글</div>
     </Card>
   );
 };

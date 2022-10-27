@@ -6,6 +6,7 @@ import Layout from '../components/Layout';
 import styled from 'styled-components';
 import { __getPosts } from '../redux/modules/postsSlice';
 import AddComment from '../features/comments/AddComment';
+import GetComments from '../features/comments/GetComments';
 
 const Detail = () => {
    const dispatch = useDispatch();
@@ -19,10 +20,7 @@ const Detail = () => {
    const { isLoading, error, post } = useSelector((state) => state.post);
    const LikeNum = post?.likes;
    const navigate = useNavigate();
-   // const inputRef = useRef<HTMLInputElement>(null);
-  //  useLayoutEffect(()=>{
-  //   if (inputRef.current !== null) inputRef.current.focus();
-  //  });
+   
 
    if (isLoading) {
       return <div>로딩 중....</div>;
@@ -91,6 +89,7 @@ const Detail = () => {
          </PostView>
          <ReplyView>
             <AddComment />
+            <GetComments />
          </ReplyView>
       </Layout>
    );
