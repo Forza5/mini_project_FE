@@ -50,7 +50,7 @@ const GetCommnet = ({ comment }) => {
                            <button onClick={() => setEdit(true)}>수정</button>
                         ) : (
                            <button onClick={onModifyCommentHandler}>
-                              완료
+                              저장
                            </button>
                         )}
                         <button onClick={onDeleteCommentHandler}>삭제</button>
