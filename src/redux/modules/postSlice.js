@@ -52,20 +52,21 @@ export const __modifyPost = createAsyncThunk(
 export const __deletePost = createAsyncThunk(
   "DELETE_POST",
   async (payload, thunkAPI) => {
-    try {
-      await axios.delete(`https://tastekim.shop/posts/${payload}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
-      thunkAPI.dispatch(__getPosts());
-      return thunkAPI.fulfillWithValue(payload);
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  }
-);
+
+     try {
+        await axios.delete(`https://tastekim.shop/posts/${payload}`, {
+           headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+           },
+        });
+         thunkAPI.dispatch(__getPosts())
+        return thunkAPI.fulfillWithValue(payload);
+     } catch (error) {
+        return thunkAPI.rejectWithValue(error);
+     }});
+
+
 
 const postSlice = createSlice({
   name: "post",
