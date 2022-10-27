@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { __getPosts } from './postsSlice';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { __getPosts } from "./postsSlice";
 
 const initialState = {
   movie: [],
@@ -50,22 +50,22 @@ export const __modifyPost = createAsyncThunk(
 );
 
 export const __deletePost = createAsyncThunk(
-  'DELETE_POST',
+  "DELETE_POST",
   async (payload, thunkAPI) => {
-     try {
-        await axios.delete(`https://tastekim.shop/posts/${payload}`, {
-           headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${localStorage.getItem('token')}`,
-           },
-        });
-         thunkAPI.dispatch(__getPosts())
-        return thunkAPI.fulfillWithValue(payload);
-     } catch (error) {
-        return thunkAPI.rejectWithValue(error);
-     }});
-
-
+    try {
+      await axios.delete(`https://tastekim.shop/posts/${payload}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      thunkAPI.dispatch(__getPosts());
+      return thunkAPI.fulfillWithValue(payload);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 const postSlice = createSlice({
   name: "post",
@@ -96,15 +96,15 @@ const postSlice = createSlice({
     },
     [__deletePost.pending]: (state) => {
       state.isLoading = true;
-   },
-   [__deletePost.fulfilled]: (state, action) => {
+    },
+    [__deletePost.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.post = action.payload;
-   },
-   [__deletePost.pending]: (state, action) => {
+    },
+    [__deletePost.pending]: (state, action) => {
       state.isLoading = true;
       state.error = action.payload;
-   },
+    },
   },
 });
 
