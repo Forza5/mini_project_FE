@@ -9,7 +9,6 @@ const GetCommnet = ({ comment }) => {
    const [input, setInput] = useState();
    const dispatch = useDispatch();
    
-   console.log(comment);
    const onModifyCommentHandler = () => {
       setEdit(!isEdit);
       if (input.trim() === '') {

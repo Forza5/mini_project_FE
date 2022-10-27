@@ -9,8 +9,8 @@ import {
 import Layout from "../components/Layout";
 import styled from "styled-components";
 import { __getPosts } from "../redux/modules/postsSlice";
-import AddComment from "../features/comments/addComment";
-import GetComments from "../features/comments/getComments";
+import AddComment from "../features/comments/AddComment";
+import GetComments from "../features/comments/GetComments";
 
 const Detail = () => {
   const dispatch = useDispatch();
@@ -25,6 +25,8 @@ const Detail = () => {
   const LikeNum = post?.likes;
   const navigate = useNavigate();
 
+  console.log(post);
+  
   if (isLoading) {
     return <div>로딩 중....</div>;
   }
@@ -42,13 +44,16 @@ const Detail = () => {
   };
 
   const onDeleteHandler = () => {
-    dispatch(__deletePost(id?.postId));
+    dispatch(__deletePost());
     navigate("/");
   };
 
   return (
     <Layout>
       <PostView>
+
+
+
         <Btns>
           {!isEdit ? (
             <button onClick={() => setEdit(true)}>수정</button>
@@ -57,6 +62,7 @@ const Detail = () => {
           )}
           <button onClick={onDeleteHandler}>삭제</button>
         </Btns>
+
         <div>
           {post?.typeofpet} / {post?.category} / {post?.subcategory}{" "}
         </div>
@@ -88,10 +94,10 @@ const Detail = () => {
           {LikeNum > 0 ? LikeNum : null}
         </div>
       </PostView>
-      <ReplyView>
+      <CommentView>
         <AddComment />
         <GetComments />
-      </ReplyView>
+      </CommentView>
     </Layout>
   );
 };
@@ -106,7 +112,7 @@ const PostView = styled.div`
   padding: 20px;
 `;
 
-const ReplyView = styled.div`
+const CommentView = styled.div`
   background-color: #e3e0e1;
   width: 600px;
   border-radius: 10px;
