@@ -10,19 +10,20 @@ import Layout from '../components/Layout';
 import styled from 'styled-components';
 import { __getPosts } from '../redux/modules/postsSlice';
 import GetComments from '../features/comments/GetComments';
+import AddComment from '../features/comments/AddComment';
 
 const Detail = () => {
    const dispatch = useDispatch();
    useEffect(() => {
-      dispatch(__getPost(id?.postId));
+      dispatch(__getPost(id.postId));
    }, [dispatch]);
 
+   
    const id = useParams();
    const [isEdit, setEdit] = useState(false);
    const ids = localStorage.getItem('loginId');
    const [input, setInput] = useState();
    const { isLoading, error, post } = useSelector((state) => state.post);
-   const LikeNum = post?.likes;
    const navigate = useNavigate();
 
    if (isLoading) {
@@ -33,6 +34,7 @@ const Detail = () => {
       return <div>{error?.message}</div>;
    }
 
+
    const onModifyHandler = () => {
       setEdit(!isEdit);
       if (input.trim() === '') {
@@ -42,7 +44,7 @@ const Detail = () => {
    };
 
    const onDeleteHandler = () => {
-      dispatch(__deletePost());
+      dispatch(__deletePost(id.postId));
       navigate('/');
    };
 
@@ -87,12 +89,9 @@ const Detail = () => {
             <ImgView>
                <ImgBlock src={post?.photo} />
             </ImgView>
-            <div>
-               좋아요
-               {LikeNum > 0 ? LikeNum : null}
-            </div>
          </PostView>
          <CommentView>
+            <AddComment />
             <GetComments />
          </CommentView>
       </Layout>

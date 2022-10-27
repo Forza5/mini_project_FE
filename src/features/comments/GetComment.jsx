@@ -11,8 +11,6 @@ const GetCommnet = ({ comment }) => {
    const [input, setInput] = useState();
    const dispatch = useDispatch();
    const ids = localStorage.getItem('loginId');
-   console.log(comment);
-   console.log(ids);
 
    const onModifyCommentHandler = () => {
       setEdit(!isEdit);
@@ -46,11 +44,11 @@ const GetCommnet = ({ comment }) => {
                <Btns>
                   {ids === comment?.loginId ? (
                      <div>
-                        {isEdit ? (
+                        {!isEdit ? (
                            <button onClick={() => setEdit(true)}>수정</button>
                         ) : (
                            <button onClick={onModifyCommentHandler}>
-                              저장
+                              완료
                            </button>
                         )}
                         <button onClick={onDeleteCommentHandler}>삭제</button>

@@ -53,6 +53,7 @@ export const __deletePost = createAsyncThunk(
   'DELETE_POST',
   async (payload, thunkAPI) => {
      try {
+      console.log(payload);
         await axios.delete(`https://tastekim.shop/posts/${payload}`, {
            headers: {
               'Content-Type': 'application/json',

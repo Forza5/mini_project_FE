@@ -10,13 +10,7 @@ const PostCard = ({ post }) => {
   const onViewHandler = () => {
     navigate(`posts/${post.postId}`);
   };
-//   const commentnum = useSelector((state) => state.comment.commentnum);
-
-//   console.log(commentnum);
-
-//   useEffect(() => {
-//     dispatch(__getCommentsNum(post.postId));
-//  }, [dispatch]);
+  
 
   return (
     <Card>
