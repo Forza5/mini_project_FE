@@ -10,9 +10,9 @@ const GetCommnet = ({ comment }) => {
 
    const onModifyCommentHandler = () => {
     setEdit(!isEdit);
-    // if (input.trim() === '') {
-    //    return alert('내용을 입력해주세요');
-    // }
+    if (input.trim() === "") {
+       return alert('내용을 입력해주세요');
+    }
     dispatch(__modifyComment({ ...comment, comment: input }));
  };
 
@@ -40,9 +40,7 @@ const GetCommnet = ({ comment }) => {
                ) : (
                   <button onClick={onModifyCommentHandler}>완료</button>
                )}
-               <button
-               //   onClick={onDeleteCommentHandler}
-               >
+               <button>
                   삭제
                </button>
             </Btns>

@@ -26,15 +26,7 @@ const GetComments = () => {
    if (error) {
       return <div>{error.message}</div>;
    }
-
-//    const onModifyCommentHandler = () => {
-//       setEdit(!isEdit);
-//       if (input.trim() === '') {
-//          return alert('내용을 입력해주세요');
-//       }
-//       dispatch(__modifyComment({ ...comments, comment: input }));
-//    };
-
+   
    return (
       <>
          {comments.map((comment) => (
