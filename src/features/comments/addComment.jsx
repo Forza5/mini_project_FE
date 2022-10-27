@@ -8,6 +8,7 @@ const AddComment = () => {
       // }}
       >
         입력 폼
+        hi
       </form>
     </>
   );
